@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#100b0d">
+<title>T380 BET | Painel demonstrativo</title>
+<style>
+:root{color-scheme:dark;--bg:#0b090b;--panel:#171216;--red:#ed1735;--muted:#aa9ba1;--gold:#ffc85a}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -20%,#45101e,#100b0e 55%,#090809 85%);color:#fff7f8;font:15px system-ui,-apple-system,Segoe UI,sans-serif;min-height:100vh}
+header{background:#100b0df2;border-bottom:1px solid #ffffff18;padding:15px 18px;position:sticky;top:0}header div{max-width:1100px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:12px}.logo{font-weight:1000;font-size:24px;letter-spacing:1px}.logo b{color:var(--red)}.tag{font-size:10px;color:#ffc5ce;border:1px solid #a92940;border-radius:20px;padding:5px 9px}
+main{max-width:1100px;margin:auto;padding:22px 16px 50px}.intro{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.intro h1{font-size:clamp(25px,5vw,36px);margin:0}.intro p{color:var(--muted);margin:5px 0 0}.btn{border:1px solid #60303c;background:#2a171e;color:white;border-radius:9px;padding:10px 13px;font-weight:700;cursor:pointer}.btn.red{background:linear-gradient(90deg,#ed1735,#a80e29);border:0}.warning{background:#21181d;border:1px solid #6b3442;border-radius:12px;padding:13px;margin:18px 0;color:#e4d4d9;font-size:12px;line-height:1.6}.warning b{color:var(--gold)}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}.card,.panel{background:linear-gradient(150deg,#21181e,#130f12);border:1px solid #3d2931;border-radius:14px;padding:16px}.card small{color:var(--muted);font-size:10px;letter-spacing:.7px}.card strong{display:block;font-size:26px;color:var(--gold);margin-top:6px}.panel{margin-top:14px}.panel h2{font-size:17px;margin:0 0 13px}.scroll{overflow-x:auto}table{border-collapse:collapse;width:100%;min-width:460px;font-size:12px}th,td{text-align:left;padding:11px 9px;border-bottom:1px solid #ffffff12}th{color:var(--muted);font-weight:600}.muted{color:var(--muted)}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.field{background:#0d0a0c;border:1px solid #52303a;border-radius:8px;color:white;padding:10px;width:125px}.empty{text-align:center;color:var(--muted);padding:18px}.status{color:#ffc85a;font-size:12px;margin-top:8px}footer{text-align:center;color:#85777d;font-size:11px;padding:25px}
+@media(max-width:700px){.cards{grid-template-columns:repeat(2,1fr)}.card{padding:13px}.card strong{font-size:22px}}
+</style></head>
+<body>
+<header><div><div class="logo">T380 <b>BET</b> <span class="tag">ADMIN • DEMO</span></div><a class="btn" href="./">Voltar aos jogos</a></div></header>
+<main>
+<section class="intro"><div><h1>Painel administrativo</h1><p>Acompanhamento local da versão demonstrativa</p></div><button class="btn" id="refresh">Atualizar dados</button></section>
+<div class="warning"><b>IMPORTANTE — AMBIENTE DE TESTE:</b> este painel lê somente dados fictícios salvos neste mesmo navegador e aparelho. Não existe cadastro real de jogadores, servidor, autenticação segura ou sincronização entre dispositivos. Não use para controlar dinheiro, depósitos ou saques.</div>
+<section class="cards">
+<div class="card"><small>JOGADAS REGISTRADAS</small><strong id="plays">0</strong></div>
+<div class="card"><small>SALDO FICTÍCIO ATUAL</small><strong id="balance">0</strong></div>
+<div class="card"><small>CRÉDITOS APOSTADOS</small><strong id="spent">0</strong></div>
+<div class="card"><small>CRÉDITOS GANHOS</small><strong id="won">0</strong></div>
+</section>
+<section class="panel"><h2>Histórico de jogadas demonstrativas</h2><div class="scroll"><table><thead><tr><th>Jogo</th><th>Aposta fictícia</th><th>Prêmio fictício</th></tr></thead><tbody id="history"></tbody></table></div><div id="empty" class="empty">Ainda não há jogadas salvas neste navegador.</div></section>
+<section class="panel"><h2>Ferramentas de teste</h2><p class="muted" style="font-size:12px">Ajuste o saldo fictício deste aparelho para testar a interface. Esta ação não movimenta dinheiro.</p><div class="actions"><input class="field" id="amount" type="number" min="0" max="1000000" step="10" value="1000" aria-label="Quantidade de créditos"><button class="btn red" id="add">Adicionar créditos fictícios</button><button class="btn" id="subtract">Retirar créditos fictícios</button><button class="btn" id="reset">Zerar demonstração</button></div><div class="status" id="status" role="status"></div></section>
+<section class="panel"><h2>Jogos disponíveis na demonstração</h2><div class="scroll"><table><thead><tr><th>Jogo</th><th>Categoria</th><th>Modo</th></tr></thead><tbody>
+<tr><td>Tesouro da Selva</td><td>Aventura</td><td>Simulado</td></tr><tr><td>Neon 7</td><td>Clássicos</td><td>Simulado</td></tr><tr><td>Dragão Carmesim</td><td>Fantasia</td><td>Simulado</td></tr><tr><td>Órbita Cósmica</td><td>Místico</td><td>Simulado</td></tr><tr><td>Segredos do Egito</td><td>Aventura</td><td>Simulado</td></tr><tr><td>Fábrica Doce</td><td>Fantasia</td><td>Simulado</td></tr>
+</tbody></table></div><p class="muted" style="font-size:11px">A lista é informativa nesta versão; a ativação/desativação de jogos ainda não está conectada.</p></section>
+</main><footer>© 2026 T380 BET • Painel de demonstração local.</footer>
+<script>
+const $=id=>document.getElementById(id),fmt=n=>Math.floor(Number(n)||0).toLocaleString('pt-BR');
+function read(){try{return JSON.parse(localStorage.getItem('t380demo')||'{}')}catch(e){return {}}}
+function write(d){localStorage.setItem('t380demo',JSON.stringify(d))}
+function refresh(){const d=read(),h=Array.isArray(d.history)?d.history:[];$('plays').textContent=fmt(d.plays);$('balance').textContent=fmt(d.balance??10000);$('spent').textContent=fmt(d.spent);$('won').textContent=fmt(d.won);$('history').innerHTML=h.map(x=>'<tr><td>'+String(x.name||'Jogo').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))+'</td><td>'+fmt(x.bet)+'</td><td>'+fmt(x.win)+'</td></tr>').join('');$('empty').style.display=h.length?'none':'block'}
+function alter(delta){const n=Number($('amount').value);if(!Number.isFinite(n)||n<=0||n>1000000){$('status').textContent='Informe um valor entre 1 e 1.000.000.';return}const d=read();d.balance= Math.max(0,Math.min(1000000,(Number.isFinite(d.balance)?d.balance:10000)+delta*n));write(d);$('status').textContent='Saldo fictício atualizado neste aparelho.';refresh()}
+$('add').onclick=()=>alter(1);$('subtract').onclick=()=>alter(-1);$('refresh').onclick=refresh;
+$('reset').onclick=()=>{if(!confirm('Apagar o histórico local e reiniciar a demonstração com 10.000 créditos fictícios?'))return;write({balance:10000,history:[],plays:0,won:0,spent:0});$('status').textContent='Demonstração reiniciada.';refresh()};
+refresh();
+</script></body></html>
